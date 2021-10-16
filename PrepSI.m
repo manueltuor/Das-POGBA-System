@@ -1,9 +1,11 @@
   
   global Spielerliste Name AW RAW Positionsliste UID Club Age CA Matrix;
-  pkg load io;
-  pkg load statistics;
-  AW=xlsread('AttributeWeights.xlsx');
-  RAW=xlsread('RawAttributeWeights.xlsx');
+  %pkg load io;
+  %pkg load statistics;
+  %AW=xlsread('AttributeWeights.xlsx');
+  %RAW=xlsread('RawAttributeWeights.xlsx');
+  load AW;
+  load RAW;
   fid = fopen('Spielerdaten 16-20.csv', 'r');
   A = textscan(fid, '%f %s %s %s %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f', 'delimiter',',');
   fclose(fid);

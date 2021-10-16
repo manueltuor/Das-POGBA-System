@@ -3,7 +3,7 @@ function SLgefiltert=Filter
   % um den SI für alle Spieler zu berechnen
   global Spielerliste Positionsliste Name Club Text6 Text7 Text8 Text9 Text10 Text11...
          Feld7 Feld8 Feld9 Feld10 Feld11 Feld11_b Feld11_c Knopf3 fi SLgefiltert...
-         SLgefiltert1 SLgefiltert2;
+         SLgefiltert1 SLgefiltert2 CAMin CAMax AlterMin AlterMax O_Positionen;
   % Die Eingabe wird eingelesen
   AlterMin=str2num(get(Feld7,'string'));
   AlterMax=str2num(get(Feld8,'string'));
@@ -21,6 +21,7 @@ function SLgefiltert=Filter
   Position(strcmp(Position,'optional'))=[];
   % sollten zwei Positionen gleich sein, wird eine gelöscht
   Vergleichspositionen=unique(Position,'stable');
+  O_Positionen=Vergleichspositionen;
   Position_Zwischenergebnis={};
   
   for Zahl=1:length(Vergleichspositionen)

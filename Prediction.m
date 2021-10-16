@@ -2,7 +2,7 @@ function Prediction
   
   % Einspeicherung der globalen Variablen
   global AW RAW Spielerliste Name SLgefiltert Gewichtung Stelle Positionszahl...
-         Ergebnisse Originalspieler fig Vergleichsspieler_SI fensterSchliessen Ergebnisse;
+         Ergebnisse Originalspieler fig Vergleichsspieler_SI fensterSchliessen;
   % sollte die Ergebnis figure noch offen sein, wird diese geschlossen
   if findobj('type','figure','name','Ergebnis');
     close('Ergebnis');

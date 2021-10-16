@@ -1,7 +1,7 @@
 function [Ergebnisse]=Ergebnis(Vergleichsspieler_Zwischenresultate)
   
   global Name Club Positionsliste CA UID Spielerliste fig Originalspieler...
-         Ergebnisse list2 Input_data;
+         Ergebnisse list2 Input_data CAMin CAMax AlterMin AlterMax O_Positionen Alter_O;
   
   VZ=Vergleichsspieler_Zwischenresultate;
   % der Originalspieler wird identifiziert
@@ -48,18 +48,25 @@ function [Ergebnisse]=Ergebnis(Vergleichsspieler_Zwischenresultate)
       {180 50 100 120 50 80 80},'position',[0.1 0.65 0.375 0.3],'columnname',{'Name','Alter',...
       'Club','Position','CA','SI','UID'});
   % Die Infos zum Originalspieler werden in einem Textfeld angegeben
-  Text12=uicontrol(fig,'units','normalized','style','text','string',sprintf('%s\n%s\n%s\n%g\n%10d',O_Name,O_Position,O_Club,O_CA,O_UID),...
+  Text12=uicontrol(fig,'units','normalized','style','text','string',sprintf('%s\n%s\n%s\n%g\n%g\n%10d',O_Name,O_Position,O_Club,O_CA,str2num(Alter_O),O_UID),...
         'position',[0.5 0.8 0.15 0.15]);
+  if length(O_Positionen)==2
+    O_Positionen=sprintf('%s,%s',O_Positionen{1},O_Positionen{2});
+  elseif length(O_Positionen)==3
+    O_Positionen=sprintf('%s,%s,%s',O_Positionen{1},O_Positionen{2},O_Positionen{3});
+  endif
+  Text13=uicontrol('units','normalized','style','text','string',sprintf('Vorhersage: %s-%s-%s\n Positionen: %s\n Alter: %g-%g\n CA: %g-%g',...
+         Input_data{6},Input_data{5},Input_data{7},O_Positionen,AlterMin,AlterMax,CAMin,CAMax),'position',[0.7 0.8 0.15 0.15]);
   % Es werden Knöpfe erstellt mit denen das Programm weitersimuliert, neugestartet,
   % oder beendet werden kann
   Knopf4=uicontrol(fig,'units','normalized','style','pushbutton','string','Weitersimulieren','position',...
-      [0.91 0.2 0.075 0.03],'callback', @Weitersimulieren);
+      [0.5 0.75 0.075 0.03],'callback', @Weitersimulieren);
   Knopf5=uicontrol(fig,'units','normalized','style','pushbutton','string','Neustart','position',...
-      [0.91 0.15 0.075 0.03],'callback', @Neustart);
+      [0.6 0.75 0.075 0.03],'callback', @Neustart);
   Knopf6=uicontrol(fig,'units','normalized','style','pushbutton','string','Beenden','position',...
-      [0.91 0.1 0.075 0.03],'callback', @Beenden);
-  Knopf4=uicontrol(fig,'units','normalized','style','pushbutton','string','Evaluieren','position',...
-      [0.91 0.25 0.075 0.03],'callback', @Evaluation);    
+      [0.7 0.75 0.075 0.03],'callback', @Beenden);
+  %Knopf4=uicontrol(fig,'units','normalized','style','pushbutton','string','Evaluieren','position',...
+      %[0.91 0.25 0.075 0.03],'callback', @Evaluation);  
   % die vorhergesagten Werte für die Attribute werden als Vektor abgespeichert
   for Zahl_1=1:51
     % die Werte für jedes einzelne Attribut werden berechnet indem die Summe,
