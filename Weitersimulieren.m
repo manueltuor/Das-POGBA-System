@@ -8,18 +8,18 @@ function Weitersimulieren
          Input_data Vergleichsspieler_SI;
   
   Daten=[];
-  % das Alter des Originalspielers wird um 1 erhöht
+  % das Alter des Originalspielers wird um 1 erhoeht
   Ergebnisse(2,1)=Ergebnisse(2,1)+1;
-  % Das Format der Ergebniss Matrix wird verändert
+  % Das Format der Ergebniss Matrix wird veraendert
   Daten(1:3,:)=Ergebnisse(1:3,:);
   Daten(4:5,:)=zeros;
   Daten(6:53,:)=Ergebnisse(4:51,:);
-  % Als Alter wird das erhöhte Alter des Originalspielers definiert
+  % Als Alter wird das erhoehte Alter des Originalspielers definiert
   Alter=Daten(2,1);
-  % wurde die Option neue Vergleichsspieler ausgewählt, muss der SI
+  % wurde die Option neue Vergleichsspieler ausgewaehlt, muss der SI
   % neu berechnet werden
   if strcmp(Input_data(7),'neu')
-    % die Matrix mit den Vergleichsspielern nach Position kann übernommen werden
+    % die Matrix mit den Vergleichsspielern nach Position kann uebernommen werden
     Spieleraltersliste=SL_gefiltert_1(:,5);
     % nun werden die Spieler rausgefiltert, die das neue Alter haben
     SL_gefiltert=SL_gefiltert_1(find(Spieleraltersliste==Alter),:);
@@ -35,7 +35,7 @@ function Weitersimulieren
   Zwischenergebnis=sortrows(Vergleichsspieler_SI,3);
   % die Variabel Laenge wird als Anzahl der Vergleichsspieler definiert
   Laenge=size(Zwischenergebnis)(1);
-  % ist diese über 99 wird sie als 99 definiert
+  % ist diese ueber 99 wird sie als 99 definiert
   if Laenge > 99
     Laenge=99;
   else
@@ -49,17 +49,17 @@ function Weitersimulieren
   else
     Matrix(find(Matrix(:,1)==Ergebnisse(1,1)),:)=[];
   endif
-  % wurde die neue Vergleichsspieler Option ausgewählt, werden die Spieler gefiltert
+  % wurde die neue Vergleichsspieler Option ausgewaehlt, werden die Spieler gefiltert
   if strcmp(Input_data(7),'neu')
-    Vergleichsspieler_Zwischenresultate=Filter_Matrix(Matrix);
-  % wenn die gleiche Vergleichsspieler Option ausgewählt wurde, sind ein Paar
+    Vergleichsspieler_Zwischenresultate=Filter_Vergleichsspieler(Matrix);
+  % wenn die gleiche Vergleichsspieler Option ausgewaehlt wurde, sind ein Paar
   % Schritte anders
   else
     Matrix_gefiltert=[];
     Zahl_3=1;
     Zahl_2=1;
-    % wurde die absolute Vorhersage ausgewählt muss nur überprüft werden ob im
-    % nächsten Jahr Daten über die Vergleichsspieler vorhanden sind
+    % wurde die absolute Vorhersage ausgewaehlt muss nur ueberprueft werden ob im
+    % naechsten Jahr Daten ueber die Vergleichsspieler vorhanden sind
     if strcmp(Input_data(6),'ABS')
       for Zahl_3=1:50
         w=Matrix(Zahl_3,:);
@@ -72,7 +72,7 @@ function Weitersimulieren
         Zahl_3+=1;
       endfor
     else
-    % wurde die evolutionäre Vorhersage ausgewählt müssen im nächsten und im
+    % wurde die evolutionaere Vorhersage ausgewaehlt muessen im naechsten und im
     % gleichen Jahr Daten vorhanden sein
       for Zahl_3=1:50
         w=Matrix(Zahl_3,:);
@@ -102,7 +102,7 @@ function Weitersimulieren
         Daten_Vergleichsspieler(Zahl_1)*v(3);
       endfor
     endfor
-  % wurde die evolutionäre Vorhersage ausgewählt müssen noch die Daten vom
+  % wurde die evolutionaere Vorhersage ausgewaehlt muessen noch die Daten vom
   % Vorjahr extrahiert werden
   if strcmp(Input_data(6),'EVO')
     for Zahl_4=1:size(Matrix_gefiltert)(1)
@@ -124,9 +124,9 @@ function Weitersimulieren
   else
     
   endif
-    % UID, Alter und SI werden in die Zwischenresultate eingefügt
+    % UID, Alter und SI werden in die Zwischenresultate eingefuegt
     Vergleichsspieler_Zwischenresultate(:,1:3)=Matrix_gefiltert;
-    % das Alter wird um 1 erhöht
+    % das Alter wird um 1 erhoeht
     Vergleichsspieler_Zwischenresultate(:,2)+=1;
   endif
   
@@ -155,8 +155,8 @@ function Weitersimulieren
   for Zahl_1=1:51
     Predicted_Ratings(Zahl_1)=sum(VZ(:,Zahl_1))/sum(VZ(:,3));
   endfor
-  % wurde die evolutionäre Vorhersage ausgewählt, müssen diese denen vom
-  % Vorjahr angezählt werden
+  % wurde die evolutionaere Vorhersage ausgewaehlt, muessen diese denen vom
+  % Vorjahr angezaehlt werden
   if strcmp(Input_data(6),'EVO')
     Originalspieler_Ratings=Ergebnisse(:,end);
     Predicted_Ratings=flip(rot90(Predicted_Ratings));
@@ -169,6 +169,6 @@ function Weitersimulieren
   Ergebnisse(:,end+1)=Predicted_Ratings;
   Daten=Ergebnisse;
   % das Balkendiagramm wird mit den kalkulierten Werten neu erstellt
-  Test(Daten);
+  Barchart(Daten);
   
 endfunction

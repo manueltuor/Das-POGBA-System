@@ -31,7 +31,7 @@ function Input_data=Eingabeformular
                'Alter:','position',[0.5 0.8 0.15 0.06]);
     Text_Position=uicontrol(fi,'units','normalized','style','text','string',...
                   'Position:','position',[0.5 0.7 0.15 0.06]);
-    % Eingabefelder für den Vorhersagespieler
+    % Eingabefelder fuer den Vorhersagespieler
     Feld_UID=uicontrol(fi,'units','normalized','style','edit','position',...
              [0.7 0.9 0.15 0.06]);
     Feld_Alter=uicontrol(fi,'units','normalized','style','edit','position',...
@@ -41,11 +41,11 @@ function Input_data=Eingabeformular
                   'AM(RL)','AM(C)','ST'},'position',[0.7 0.7 0.15 0.06]);
     Feld_Name=uicontrol(fi,'units','normalized','style','edit','position',...
               [0.3 0.9 0.15 0.06]);
-    % Knöpfe zum Berechnen und Filtern
+    % Knoepfe zum Berechnen und Filtern
     Knopf_Dateninput=uicontrol(fi,'units','normalized','style','pushbutton',...
                      'string','Berechnen','position',[0.7 0.1 0.15 0.06],...
                      'callback', @Dateninput);
-    % wenn der 'Suchen' Knopf gedrückt wird, werden die Spieler nach Eingabe gefiltert
+    % wenn der 'Suchen' Knopf gedrueckt wird, werden die Spieler nach Eingabe gefiltert
     Knopf_Filter_Name=uicontrol(fi,'units','normalized','style','pushbutton',...
                       'string','Suchen','position',[0.3 0.1 0.15 0.06],...
                       'callback', @Filter_Name);
@@ -78,7 +78,7 @@ function Input_data=Eingabeformular
     Text_Auswahl=uicontrol(fi,'units','normalized','style','text','string',...
                  'Auswahl:','position',[0.5 0.6 0.15 0.06]);
     
-    % Beschriftungen und Eingabefelder für den Filtrierbereich
+    % Beschriftungen und Eingabefelder fuer den Filtrierbereich
     Text_Filter=uicontrol(fi,'units','normalized','style','text','string',...
                 'Filter','position',[0.5 0.45 0.075 0.03]);
     Text_Alter_Min=uicontrol(fi,'units','normalized','style','text','string',...
@@ -118,7 +118,7 @@ function Input_data=Eingabeformular
                  'string','Filtern','position',[0.7 0.25 0.075 0.03],...
                  'callback', @Filter);
     % die Funktion wird pausiert und erst fortgesetzt, wenn der Knopf 'Berechnen'
-    % gedrückt wird
+    % gedrueckt wird
     waitfor(Knopf_Dateninput,'value');
     
 endfunction

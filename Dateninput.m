@@ -5,7 +5,7 @@ function Dateninput()
          Knopf_Dateninput O_UID O_Alter;
          
     % hier werden alle Eingaben aus dem Eingabeformular eingelesen, diese
-    % Funktion wird nur ausgelöst, wenn der Knopf 'Berechnen' gedrückt wird
+    % Funktion wird nur ausgeloest, wenn der Knopf 'Berechnen' gedrueckt wird
     O_UID=get(Feld_UID,'string');
     O_Alter=get(Feld_Alter,'string');
     Positionszahl=get(Feld_Position,'value');

@@ -1,12 +1,12 @@
 function [Vergleichsspieler_SI]=SI(v)
   
   global Spielerliste Positionszahl SL_gefiltert Gewichtung Stelle;
-  % in dieser Funktion wird die Ähnlichkeit aller gefilterten Vergleichsspieler
+  % in dieser Funktion wird die Aehnlichkeit aller gefilterten Vergleichsspieler
   % mit dem Auswahlspieler berechnet
   Laenge=length(SL_gefiltert);
   for Zaehler=1:Laenge
     w=SL_gefiltert(Zaehler,:);
-    % für alle Vergleichsspieler wird für jedes Attribut die Abweichung
+    % fuer alle Vergleichsspieler wird fuer jedes Attribut die Abweichung
     % berechnet und je nach Auswahl gewichtet
     cor=(abs(v(9)-w(9)))*Gewichtung(1,Positionszahl);
     cro=(abs(v(10)-w(10)))*Gewichtung(2,Positionszahl);

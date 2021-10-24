@@ -1,7 +1,7 @@
 function SLgefiltert=Filter
   
-  % In dieser Funktion werden die Spieler gefiltert, da es zu lange gehen würde
-  % um den SI für alle Spieler zu berechnen
+  % In dieser Funktion werden die Spieler gefiltert, da es zu lange gehen wuerde
+  % um den SI fuer alle Spieler zu berechnen
   global Spielerliste Positionsliste Name Club Feld_Alter_Min Feld_Alter_Max...
          Feld_CA_Min Feld_CA_Max Feld_Position_1 Feld_Position_2 Feld_Position_3...
          fi SL_gefiltert SL_gefiltert_1 CA_Min CA_Max Alter_Min Alter_Max...
@@ -21,14 +21,14 @@ function SLgefiltert=Filter
   Position={Position_1,Position_2,Position_3};
   % Die Eingaben, die auf optional gelassen werden, werden entfernt
   Position(strcmp(Position,'optional'))=[];
-  % sollten zwei Positionen gleich sein, wird eine gelöscht
+  % sollten zwei Positionen gleich sein, wird eine geloescht
   Vergleichspositionen=unique(Position,'stable');
   O_Positionen=Vergleichspositionen;
   Position_Zwischenergebnis={};
   
   for Zahl=1:length(Vergleichspositionen)
-    % für jede ausgewählte Position werden alle Positionsbezeichnungen 
-    % ausgewählt, welche diese Position abdecken
+    % fuer jede ausgewaehlte Position werden alle Positionsbezeichnungen 
+    % ausgewaehlt, welche diese Position abdecken
     Position=char(Vergleichspositionen(Zahl));
     if strcmp('GK',Position)
       erweiterte_Position={'GK'};
@@ -63,11 +63,11 @@ function SLgefiltert=Filter
     Position_Zwischenergebnis(length(Position_Zwischenergebnis)+1:length...
     (Position_Zwischenergebnis)+length(erweiterte_Position))=erweiterte_Position;
   endfor
-  % die Duplikate werden wieder gelöscht
+  % die Duplikate werden wieder geloescht
   Position=unique(Position_Zwischenergebnis,'stable');
   
   Zahl=length(Position);
-  % Alle Spieler, welche diese Position spielern können werden in
+  % Alle Spieler, welche diese Position spielern koennen werden in
   % SLgefiltert1 abgespeichert
   if Zahl==1
     str = Positionsliste;
@@ -86,7 +86,7 @@ function SLgefiltert=Filter
       SL_gefiltert_1=Spielerliste;
       SL_gefiltert_1(find(all(res==0,2)),:)=[];
   endif
-  % es wird noch ueberprueft, dass keine gegensätzlichen Eingaben vorliegen
+  % es wird noch ueberprueft, dass keine gegensaetzlichen Eingaben vorliegen
   if CA_Max>=CA_Min && Alter_Max>=Alter_Min
     Spielerwertungsliste=SL_gefiltert_1(:,6);
     % die Spieler mit der gleichen Position werden noch nach dem CA 
