@@ -21,4 +21,5 @@ Nun folgt eine kurze Anleitung zur Benutzung des Programms:
 13. Sie können nun die Karriere weitersimulieren, das Programm für einen neuen Spieler neustarten, oder es beenden.
 
 Die Schritte 6-13 sind im untenstehenden Video illustriert:
+
 https://user-images.githubusercontent.com/91838413/138596518-89dc9747-a6dc-4990-bb81-45584cb82a73.mp4
