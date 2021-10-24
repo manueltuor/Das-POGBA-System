@@ -12,3 +12,7 @@ Nun folgt eine kurze Anleitung zur Benutzung des Programms:
 4. Geben sie im Command Window "Daten_Laden" ein, um alle für das Programm benötigten Variablen zu laden.
 5. Danach geben sie "Vorhersage" ins Command Windows ein, um Vorhersagen berechnen zu lassen.
 6. s
+
+
+https://user-images.githubusercontent.com/91838413/138596518-89dc9747-a6dc-4990-bb81-45584cb82a73.mp4
+
