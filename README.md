@@ -11,4 +11,4 @@ Nun folgt eine kurze Anleitung zur Benutzung des Programms:
 3. Öffnen sie Octave und navigieren sie im File Browser zum Ordner des POGBA Systems.
 4. Geben sie im Command Window "Daten_Laden" ein, um alle für das Programm benötigten Variablen zu laden.
 5. Danach geben sie "Vorhersage" ins Command Windows ein, um Vorhersagen berechnen zu lassen.
-6. 
+6. s
