@@ -22,4 +22,4 @@ Nun folgt eine kurze Anleitung zur Benutzung des Programms:
 
 Die Schritte 6-13 sind im untenstehenden Video illustriert:
 
-https://user-images.githubusercontent.com/91838413/138596518-89dc9747-a6dc-4990-bb81-45584cb82a73.mp4
+https://user-images.githubusercontent.com/91838413/138596908-b5c7c962-f6ed-45ab-819b-0348875e1cd9.mp4
