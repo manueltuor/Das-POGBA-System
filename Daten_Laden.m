@@ -1,11 +1,16 @@
 function Daten_Laden
   
+  % in dieser Funktion werden alle für die Vorhersage benoetigten Variablen
+  % geladen
   global Spielerliste Name AW RAW Positionsliste UID Club Age CA Matrix;
+  % Die .mat Dateien, wo die Gewichtungen gespeichert sind, werden geladen
   load AW;
   load RAW;
+  % Die Spielerdaten werden eingelesen
   fid = fopen('Spielerdaten 16-20.csv', 'r');
   A = textscan(fid, '%f %s %s %s %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f', 'delimiter',',');
   fclose(fid);
+  % jede Stelle wird als Cell Array abgespeichert
   UID=A{1};
   Name=A{2};
   Positionsliste=A{3};
@@ -59,10 +64,12 @@ function Daten_Laden
   rus=A{51};
   pun=A{52};
   thr=A{53};
+  % alle numerische Daten werden in eine grosse Matrix gespeichert
   Spielerliste=[UID,UID,UID,UID,Age,CA,PA,Value,cor,cro,dri,fin,fir,fre,hea,...
                 loS,loT,mar,pas,pen,tac,tec,agg,ant,bra,coP,con,vis,dec,det,...
                 fla,lea,off,pos,tea,wor,acc,agi,bal,jum,nat,pac,sta,str,aer,...
                 coA,kic,one,ref,ecc,rus,pun,thr];
+  % die Stellen des Namen, der Position und des Vereins werden durch 0 ersetzt
   Spielerliste(:,2:4)=zeros; 
   
 endfunction  

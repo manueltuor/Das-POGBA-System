@@ -7,7 +7,7 @@ function Filter_Name()
     contains=@(string, pattern) ~cellfun('isempty', strfind(string, pattern));
     % es wird geschaut welche Spielernamen die Eingabe beinhalten
     Treffer=contains(string, pattern);
-      % Die Suchliste wird mit den zutreffenden Spielern neu erstellt
+      % Die Suchliste wird fuer die zutreffenden Spieler neu erstellt
       Name_Gefiltert=Name;
       Name_Gefiltert(find(Treffer==0),:)=[];
       Club_Gefiltert=Club;

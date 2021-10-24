@@ -2,7 +2,7 @@ function Weitersimulieren
   
   % in dieser Funktion wird die Karriere des Spielers um ein weiteres Jahr
   % simuliert, in dieser Funktion sind ausserdem viele Codezeilen aus anderen 
-  % Funktionen reinkopiert
+  % Funktionen reinkopiert worden
   global Name Club Positionsliste CA UID Stelle fi Ergebnisse SL_gefiltert_1... 
          SL_gefiltert Spielerliste Liste_Vergleichsspieler Originalspieler...
          Input_data Vergleichsspieler_SI;
@@ -10,7 +10,7 @@ function Weitersimulieren
   Daten=[];
   % das Alter des Originalspielers wird um 1 erhoeht
   Ergebnisse(2,1)=Ergebnisse(2,1)+1;
-  % Das Format der Ergebniss Matrix wird veraendert
+  % Das Format der Ergebnisse Matrix wird veraendert
   Daten(1:3,:)=Ergebnisse(1:3,:);
   Daten(4:5,:)=zeros;
   Daten(6:53,:)=Ergebnisse(4:51,:);
@@ -33,7 +33,7 @@ function Weitersimulieren
   endif
   % die Vergleichsspieler werden wieder nach SI sortiert
   Zwischenergebnis=sortrows(Vergleichsspieler_SI,3);
-  % die Variabel Laenge wird als Anzahl der Vergleichsspieler definiert
+  % die Variable Laenge wird als Anzahl der Vergleichsspieler definiert
   Laenge=size(Zwischenergebnis)(1);
   % ist diese ueber 99 wird sie als 99 definiert
   if Laenge > 99
@@ -119,7 +119,7 @@ function Weitersimulieren
         Daten_Vergleichsspieler_Vorjahr(Zahl_5)*v(3);
       endfor
     endfor
-    % Die Daten vom Vorjahr werden von den Daten von denen von dem Jahr abgezogen
+    % Die Daten vom Vorjahr werden von den Daten von dem Jahr abgezogen
     Vergleichsspieler_Zwischenresultate-=Vergleichsspieler_Zwischenresultate_Vorjahr;
   else
     
@@ -132,7 +132,7 @@ function Weitersimulieren
   
   VZ=Vergleichsspieler_Zwischenresultate;
   Laenge=size(VZ)(1);
-  % Die Infos der Vergleichsspieler werden abgespeichert
+  % Die Infos der Vergleichsspieler werden neu abgespeichert
   for Zahl=1:Laenge;
     Stelle=find(Spielerliste(:,1)==VZ(Zahl,1) & Spielerliste(:,5)==VZ(Zahl,2));
     if isscalar(Stelle)

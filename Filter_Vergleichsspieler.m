@@ -7,7 +7,7 @@ function [Vergleichsspieler_Zwischenresultate]=Filter_Vergleichsspieler(Matrix)
   Zahl=1;
   Zahl_0=1;
   % die 50 "aehnlichsten" Spieler mit genuegend Daten werden in die Matrix_gefiltert
-  % Variabel abgespeichert 
+  % Variable abgespeichert 
   while (size(Matrix_gefiltert))(1) < 50
     % die Vergleichsspieler werden auf das Vorhandensein von Daten ueberprueft,
     % je hoeher der SI, desto eher werden sie ueberprueft
@@ -54,6 +54,7 @@ function [Vergleichsspieler_Zwischenresultate]=Filter_Vergleichsspieler(Matrix)
     for Zahl_3=1:50
       v=Matrix_gefiltert(Zahl_3,:);
       Stelle=find(Spielerliste(:,1)==v(1) & Spielerliste(:,5)==v(2));
+      % Duplikate werden stets ausgeschlossen
       if isscalar(Stelle)
      
       else
@@ -71,6 +72,8 @@ function [Vergleichsspieler_Zwischenresultate]=Filter_Vergleichsspieler(Matrix)
   else
     
   endif
+  % Alter, UID und SI werden auch noch in die Vergleichsspieler_Zwischenresultate
+  % Variable abgespeichert
   Vergleichsspieler_Zwischenresultate(:,1:3)=Matrix_gefiltert;
   Vergleichsspieler_Zwischenresultate(:,2)+=1;
 endfunction

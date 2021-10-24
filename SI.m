@@ -53,11 +53,15 @@ function [Vergleichsspieler_SI]=SI(v)
     rus=(abs(v(51)-w(51)))*Gewichtung(48,Positionszahl);
     pun=(abs(v(52)-w(52)))*Gewichtung(46,Positionszahl);
     thr=(abs(v(53)-w(53)))*Gewichtung(49,Positionszahl);
+    % von der maximal möglichen gewichteten Abweichung wird die tatsächliche
+    % gewichtete Abweichung subtrahiert, diese Zahl wird dann durch ein
+    % hundertstel der maximal möglichen gewichteten Abweichung geteilt, sombrero
+    % ergibt sich der SI 
     SI=(((sum(Gewichtung(:,Positionszahl)))*20)-(cor+cro+dri+fin+fir+fre+hea+loS+loT+mar...
       +pas+pen+tac+tec+agg+ant+bra+coP+con+dec+det+fla+lea+off+pos+tea+vis+wor+acc...
       +agi+bal+jum+nat+pac+sta+str+aer+coA+kic+one+ref+ecc+rus+pun+thr))...
       /(((sum(Gewichtung(:,Positionszahl)))*20)/100);
-      
+    % UID und Alter werden auch abgespeichert
     Vergleichsspieler_SI(Zaehler,1)=w(1);
     Vergleichsspieler_SI(Zaehler,2)=w(5);
     Vergleichsspieler_SI(Zaehler,3)=SI;

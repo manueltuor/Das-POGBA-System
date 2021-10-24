@@ -1,12 +1,12 @@
 function SLgefiltert=Filter
   
   % In dieser Funktion werden die Spieler gefiltert, da es zu lange gehen wuerde
-  % um den SI fuer alle Spieler zu berechnen
+  % um den SI fuer alle Spieler der Datenbank zu berechnen
   global Spielerliste Positionsliste Name Club Feld_Alter_Min Feld_Alter_Max...
          Feld_CA_Min Feld_CA_Max Feld_Position_1 Feld_Position_2 Feld_Position_3...
          fi SL_gefiltert SL_gefiltert_1 CA_Min CA_Max Alter_Min Alter_Max...
          O_Positionen;
-  % Die Eingabe wird eingelesen
+  % Die Eingaben zur Filtrierung der Vergleichsspielers werden eingelesen
   Alter_Min=str2num(get(Feld_Alter_Min,'string'));
   Alter_Max=str2num(get(Feld_Alter_Max,'string'));
   CA_Min=str2num(get(Feld_CA_Min,'string'));
@@ -19,7 +19,7 @@ function SLgefiltert=Filter
   Position_3=char(get(Feld_Position_3,'string')(Positionszahl_3));
   % alle optionalen Positionen werden auf eine Variable eingespeichert
   Position={Position_1,Position_2,Position_3};
-  % Die Eingaben, die auf optional gelassen werden, werden entfernt
+  % Die Eingaben, die auf optional gelassen wurden, werden entfernt
   Position(strcmp(Position,'optional'))=[];
   % sollten zwei Positionen gleich sein, wird eine geloescht
   Vergleichspositionen=unique(Position,'stable');
@@ -67,8 +67,8 @@ function SLgefiltert=Filter
   Position=unique(Position_Zwischenergebnis,'stable');
   
   Zahl=length(Position);
-  % Alle Spieler, welche diese Position spielern koennen werden in
-  % SLgefiltert1 abgespeichert
+  % Alle Spieler, welche diese Position spielen koennen, werden in
+  % SL_gefiltert_1 abgespeichert
   if Zahl==1
     str = Positionsliste;
     pattern= Position{1};
@@ -89,13 +89,15 @@ function SLgefiltert=Filter
   % es wird noch ueberprueft, dass keine gegensaetzlichen Eingaben vorliegen
   if CA_Max>=CA_Min && Alter_Max>=Alter_Min
     Spielerwertungsliste=SL_gefiltert_1(:,6);
-    % die Spieler mit der gleichen Position werden noch nach dem CA 
+    % die Spieler mit den zutreffenden Positionen werden noch nach dem CA 
     % (current ability) gefiltert, der eingegeben wurde
-    SL_gefiltert_2=SL_gefiltert_1(find(Spielerwertungsliste>=CA_Min & Spielerwertungsliste<=CA_Max),:);
+    SL_gefiltert_2=SL_gefiltert_1(find(Spielerwertungsliste>=CA_Min...
+    & Spielerwertungsliste<=CA_Max),:);
     Spieleraltersliste=SL_gefiltert_2(:,5);
-    % zum Schluss werden die gefilterten Spieler noch nach dem Alter sortiert
-    SL_gefiltert_3=SL_gefiltert_2(find(Spieleraltersliste>=Alter_Min & Spieleraltersliste<=Alter_Max),:);
-    % Die letzte Filterung ist dann die abschliessend gefilterte Liste SLgefiltert
+    % zum Schluss werden die gefilterten Spieler noch nach dem Alter gefiltert
+    SL_gefiltert_3=SL_gefiltert_2(find(Spieleraltersliste>=Alter_Min...
+    & Spieleraltersliste<=Alter_Max),:);
+    % Die letzte Filterung ist dann die abschliessend gefilterte Liste SL_gefiltert
     SL_gefiltert=SL_gefiltert_3;
   
     Laenge=length(SL_gefiltert);

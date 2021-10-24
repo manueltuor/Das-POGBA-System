@@ -19,9 +19,10 @@ function Vorhersage
   Positionszahl=Input{4};
   Alter=str2num(Input{2});
   UID=str2num(Input{1});
+  % Der ausgewaehlte Spieler wird mittels Alter und UID identifiziert
   Stelle=find(Spielerliste(:,1)==UID & Spielerliste(:,5)==Alter);
   % Sollte der Spieler zwei Profile im gleichen Alter haben (kommt selten
-  % vor) wird das erste gewaehlt
+  % vor), wird das erste gewaehlt
   if isscalar(Stelle)
     
   else
@@ -34,7 +35,7 @@ function Vorhersage
   % die Vergleichsspieler werden nach SI sortiert
   Zwischenergebnis=sortrows(Vergleichsspieler_SI,3);
   % danach wird das Zwischenergebnis gewendet und die 100 "aehnlichsten" Spieler
-  % werden in die Matrix Variabel abgespeichert
+  % werden in die Matrix Variabel abgespeichert und gedreht
   Matrix=flipud(Zwischenergebnis(end-99:end,:));
   % der aehnlichste Spieler ist stets der Originalspieler, dieser wird in eine
   % separate Variabel abgespeichert und aus der Matrix entfernt
@@ -47,6 +48,8 @@ function Vorhersage
   % Teile des Ergebnis GUI's erstellt
   Ergebnisse=Ergebnis(Vergleichsspieler_Zwischenresultate);
   Daten=Ergebnisse;
+  % mit der barchart Funktion wird das Balkendiagramm mit der Vorhersage
+  % erstellt
   Barchart(Daten);
   % die Funktion wird pausiert bis entweder der Beenden oder Neustart Knopf
   % gedrueckt wird

@@ -6,6 +6,8 @@ function Dateninput()
          
     % hier werden alle Eingaben aus dem Eingabeformular eingelesen, diese
     % Funktion wird nur ausgeloest, wenn der Knopf 'Berechnen' gedrueckt wird
+    % Die Eingaben fuer Alter und UID werden noch separat eingespeichert, daspect
+    % diese fuer die Ergebnis Funktion gebraucht werden
     O_UID=get(Feld_UID,'string');
     O_Alter=get(Feld_Alter,'string');
     Positionszahl=get(Feld_Position,'value');
